@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://www.codeandweb.com/texturepacker-->
+<!-- $TexturePacker:SmartUpdate:b0d7545da16b3e3d19c72d710bdee462:1/1$ -->
+<TextureAtlas imagePath="atlas.png">
+    <SubTexture name="BlueButtonDown" x="30" y="68" width="26" height="64"/>
+    <SubTexture name="BlueButtonUp" x="58" y="68" width="26" height="64"/>
+    <SubTexture name="ListItem" x="30" y="134" width="28" height="66"/>
+    <SubTexture name="TabCentreDown" x="2" y="134" width="26" height="64"/>
+    <SubTexture name="TabCentreUp" x="86" y="68" width="26" height="64"/>
+    <SubTexture name="TabLeftDown" x="2" y="68" width="26" height="64"/>
+    <SubTexture name="TabLeftUp" x="43" y="2" width="26" height="64"/>
+    <SubTexture name="TabRightDown" x="71" y="2" width="26" height="64"/>
+    <SubTexture name="TabRightUp" x="99" y="2" width="26" height="64"/>
+    <SubTexture name="back" x="2" y="2" width="39" height="38"/>
+    <SubTexture name="icon" x="60" y="134" width="63" height="71"/>
+</TextureAtlas>
