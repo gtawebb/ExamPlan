@@ -5,7 +5,6 @@ package
 	
 	import feathers.controls.Button;
 	import feathers.controls.Header;
-	import feathers.controls.Label;
 	import feathers.controls.List;
 	import feathers.controls.PageIndicator;
 	import feathers.controls.Screen;
@@ -30,13 +29,13 @@ package
 		private var detailText:TextInput;
 		private var container:List;
 		
-		private var butVector:Vector.<String>;
+	//	private var butVector:Vector.<String>;
 		private var tipsIndex:int;
 		protected var _fatController:FatController;
 		private var pages:PageIndicator;
-		private var headerText:Label;
-		private var bodyText:TextInput;
-		private var bodTextArray:Array;
+		//private var headerText:Label;
+		//private var bodyText:TextInput;
+		//private var bodTextArray:Array;
 		private var count:int=0;
 	//	private var square:Quad;
 		private var leaving:Boolean=false;
@@ -104,46 +103,18 @@ package
 			//layout.padding = 20;
 			var group:ScrollContainer=new ScrollContainer();
 			group.layout=layoutVert;
-			//group.scrollBarDisplayMode=Scroller.SCROLL_BAR_DISPLAY_MODE_FIXED;
-			//group.horizontalScrollPolicy=Scroller.SCROLL_POLICY_OFF;
-			//group.verticalScrollPolicy=Scroller.SCROLL_POLICY_ON;
 			
-			
-			//container.x==(Constants.STAGE_WIDTH/100)*2;
-			bodTextArray=new Array();
 			
 			var myObject:Object;
 			var myArrayOfObjects:Array=[];
+			//var headers:Vector.<String>=Constants["TIPS_DETAILS_HEADERS_"+tipsIndex];
+			var bodies:Vector.<String>=Constants["TIPS_DETAILS_BODIES_"+tipsIndex];
+			var theLength:int=bodies.length;
 			
-			for (var i:int = 0; i < Constants["TIPS_DETAILS_HEADERS_"+tipsIndex].length; i++) 
+			for (var i:int = 0; i < theLength; i++) 
 			{
-				/*group=new ScrollContainer();
 				
-				headerText= new Label();
-				headerText.minHeight=i;
-				headerText.text = Constants["TIPS_DETAILS_HEADERS_"+tipsIndex][i];
-				headerText.width=(Constants.STAGE_WIDTH);
-				//headerText.y=square.height;
-				headerText.addEventListener( FeathersEventType.RESIZE, initializeHandler );
-				//headerText.y=(Constants.STAGE_HEIGHT/100)*2;
-				headerText.nameList.add( SpurnTheme.TIPS_HEADING_TEXT_AREA );
-				
-				group.addChild(headerText);
-				headerText.validate();
-			
-				bodyText= new TextInput();
-				bodyText.nameList.add( SpurnTheme.DETAILS_TEXT_AREA );
-				bodyText.text = Constants["TIPS_DETAILS_BODIES_"+tipsIndex][i];
-				bodyText.isEditable=false;
-				bodyText.width=(Constants.STAGE_WIDTH);
-				bodyText.y=headerText.y+headerText.height;
-				bodyText.height=260;
-				bodTextArray.push(bodyText);
-				group.addChild(bodyText);
-				group.height=(Constants.STAGE_HEIGHT/100)*64;
-				
-				container.addChild(group);*/
-				myObject={label:Constants["TIPS_DETAILS_HEADERS_"+tipsIndex][i],body:Constants["TIPS_DETAILS_BODIES_"+tipsIndex][i]}
+				myObject={label:bodies[i]}
 				myArrayOfObjects.push(myObject);
 			}
 			
@@ -172,13 +143,13 @@ package
 		}
 		
 		
-		private function initializeHandler(e:Event):void
+		/*private function initializeHandler(e:Event):void
 		{
 			trace("headerText height = "+Label(e.target).height)
 			
 			bodTextArray[Label(e.target).minHeight].y=Label(e.target).y+Label(e.target).height;
 			
-		}
+		}*/
 		
 		private function scrollComplete(e:Event):void
 		{
@@ -191,7 +162,7 @@ package
 		private function createPageIndicator():void
 		{
 			pages = new PageIndicator();
-			pages.pageCount = Constants["TIPS_DETAILS_HEADERS_"+tipsIndex].length;
+			pages.pageCount = Constants["TIPS_DETAILS_BODIES_"+tipsIndex].length;
 			pages.y=(Constants.STAGE_HEIGHT/100)*96;
 			pages.width=Constants.STAGE_WIDTH;
 		//	pages.width=Constants.STAGE_WIDTH;
@@ -261,6 +232,9 @@ package
 		private function destroy():void
 		{
 			this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
+			container.removeEventListener(FeathersEventType.SCROLL_COMPLETE, scrollComplete);
+			pages.removeEventListener( Event.CHANGE, pageIndicator_changeHandler );
+			container.removeChildren();
 			removeChild(header);
 			removeChild(container);
 			removeChild(detailText);
@@ -271,7 +245,7 @@ package
 			container=null;
 			header=null;
 			backButton = null;
-			
+			//_fatController=null;
 		}
 		
 	}

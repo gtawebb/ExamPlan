@@ -145,15 +145,14 @@ package
 		
 		private function destroy():void
 		{
-			//this.flatten();
-			removeChild(list);
-			removeChild(header);
-			container.removeChild( this.headingText );
-			removeChild(container);
-			removeChild(iconImage);
-			removeChild(detailText);
-			removeChild(tabs);
-			removeChild(square);
+			removeChildren();
+			list.removeEventListener( starling.events.Event.CHANGE, list_changeHandler );
+			list.removeEventListener( starling.events.Event.RESIZE, list_changeHandler );
+			Dialog.service.removeEventListener( DialogEvent.DIALOG_CLOSED, dialog_dialogClosedHandler);
+			Dialog.service.removeEventListener( DialogEvent.DIALOG_CANCELLED, dialog_dialogCancelledHandler);
+			editButton.addEventListener(starling.events.Event.TRIGGERED, editClicked);
+			iconImage.dispose();
+			editButton=null;
 			square=null;
 			tabs=null;
 			detailText=null;
@@ -164,6 +163,8 @@ package
 			iconTexture=null;
 			headingText=null;
 			listData=null;
+			_fatController=null;
+			
 			this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
 		}
 		
@@ -596,7 +597,8 @@ package
 			tabs = new ButtonGroup();
 			tabs.direction = ButtonGroup.DIRECTION_HORIZONTAL;
 			//tabs.gap=5;
-			tabs.padding=5;
+			tabs.horizontalAlign=ButtonGroup.HORIZONTAL_ALIGN_CENTER;
+
 			//tabs.paddingRight=5;
 			tabs.customButtonName = SpurnTheme.ALTERNATE_NAME_MY_TAB_MIDDLE;
 			

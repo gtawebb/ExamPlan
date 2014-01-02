@@ -34,6 +34,7 @@ package
 		private var header:Header;
 		private var detailText:TextInput;
 		private var leaving:Boolean=false;
+		private var appCollection:ListCollection;
 
 		
 		public function RevisionApps()
@@ -70,14 +71,14 @@ package
 		{
 			this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
 			//this.flatten();
-			removeChild(list);
-			removeChild(header);
-			
+			list.removeChildren();
+			removeChildren();
 			removeChild(detailText);
-			
+			_fatController=null;
 			detailText=null;
-			
+			myExamData=null;
 			header=null;
+			appCollection=null;
 			list=null;
 			
 		}
@@ -133,7 +134,7 @@ package
 			
 			list.horizontalScrollPolicy = List.SCROLL_POLICY_OFF;
 			trace("it is : "+Root.FAT_CONTROLLER.revisionApps)
-			var appCollection:ListCollection = new ListCollection(Root.FAT_CONTROLLER.revisionApps.results)
+			appCollection = new ListCollection(Root.FAT_CONTROLLER.revisionApps.results)
 			//var appCollection:ListCollection = new ListCollection(myExamData.results)
 				
 			

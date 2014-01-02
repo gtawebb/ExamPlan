@@ -4,6 +4,13 @@ package themes
 	import flash.geom.Rectangle;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
+	import flash.text.engine.CFFHinting;
+	import flash.text.engine.ElementFormat;
+	import flash.text.engine.FontDescription;
+	import flash.text.engine.FontLookup;
+	import flash.text.engine.FontPosture;
+	import flash.text.engine.FontWeight;
+	import flash.text.engine.RenderingMode;
 	
 	import feathers.controls.Button;
 	import feathers.controls.Label;
@@ -235,12 +242,12 @@ package themes
 				var editor:TextFieldTextRenderer = new TextFieldTextRenderer();
 				editor.wordWrap=true;
 				//editor.multiline = true;
-			
+				editor.isHTML=true;
 				editor.background=true;
 				editor.backgroundColor=0x000000;
 				editor.wordWrap = true;
 				
-				editor.textFormat = new TextFormat( "Helvetica", 16, 0xFFFFFF,true,null,null,null,null,TextFormatAlign.CENTER,null,null,null,5 );
+				editor.textFormat = new TextFormat( "Helvetica", 16, 0xFFFFFF,false,null,null,null,null,TextFormatAlign.CENTER,null,null,null,5 );
 				
 				return editor;
 			}
@@ -351,14 +358,15 @@ package themes
 				};
 			renderer.stateToSkinFunction = skinSelector.updateValue;
 			
+		
+			this.regularFontDescription = new FontDescription("DINEngschriftStd", FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.DEVICE, RenderingMode.NORMAL, CFFHinting.HORIZONTAL_STEM);
 			
-			
-			
-			renderer.defaultLabelProperties.textFormat  = new TextFormat( "DINEngschriftStd", 18, 0xFFFFFF );
+			renderer.defaultLabelProperties.elementFormat  = new ElementFormat(this.regularFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);
 			renderer.defaultLabelProperties.embedFonts = true;
-			renderer.downLabelProperties.textFormat  = new TextFormat( "DINEngschriftStd", 18, 0xFFFFFF);
+			
+			renderer.downLabelProperties.elementFormat  = new ElementFormat(this.regularFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);//new TextFormat( "DINEngschriftStd", 18, 0xFFFFFF);
 			renderer.downLabelProperties.embedFonts = true;
-			renderer.defaultSelectedLabelProperties.textFormat  = new TextFormat( "DINEngschriftStd", 18, 0x000000 );
+			renderer.defaultSelectedLabelProperties.elementFormat  = new ElementFormat(this.regularFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);
 			renderer.defaultSelectedLabelProperties.embedFonts = true;
 			
 			renderer.horizontalAlign = Button.HORIZONTAL_ALIGN_LEFT;
@@ -448,7 +456,7 @@ package themes
 			button.downSkin = defaultSkinDown;
 		}
 		
-		protected function myCustomListInitializer( list:List ):void
+		/*protected function myCustomListInitializer( list:List ):void
 		{
 			var downBut:Texture = Root.assets.getTexture("BlueButtonDown")
 			var upBut:Texture = Root.assets.getTexture("BlueButtonUp")
@@ -470,6 +478,6 @@ package themes
 			
 			
 			//button. = new TextFormat( "calibri", 30, 0xffffff );
-		}
+		}*/
 	}
 }

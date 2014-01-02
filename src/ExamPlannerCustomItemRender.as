@@ -2,7 +2,6 @@ package
 {
 	import feathers.controls.Label;
 	import feathers.controls.List;
-	import feathers.controls.TextInput;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.core.FeathersControl;
 	
@@ -17,7 +16,7 @@ package
 		}
 		
 		protected var _label:Label;
-		protected var _subLabel:TextInput;
+		//protected var _subLabel:TextInput;
 		
 		protected var _index:int = -1;
 		
@@ -112,9 +111,9 @@ package
 				this._label = new Label();
 				this._label.nameList.add( SpurnTheme.TIPS_HEADING_TEXT_AREA );
 				this.addChild(this._label);
-				this._subLabel = new TextInput();
-				this._subLabel.nameList.add( SpurnTheme.DETAILS_TEXT_AREA );
-				this.addChild(this._subLabel);
+				//this._subLabel = new TextInput();
+				//this._subLabel.nameList.add( SpurnTheme.DETAILS_TEXT_AREA );
+				//this.addChild(this._subLabel);
 			}
 			
 		}
@@ -144,21 +143,21 @@ package
 			this._label.width = this.explicitWidth - 2 * this._padding;
 			this._label.height = this.explicitHeight - 2 * this._padding;
 			this._label.validate();
-			this._subLabel.width = this.explicitWidth - 2 * this._padding;
-			this._subLabel.height = this.explicitHeight - 2 * this._padding;
-			this._subLabel.validate();
+			//this._subLabel.width = this.explicitWidth - 2 * this._padding;
+			//this._subLabel.height = this.explicitHeight - 2 * this._padding;
+			//this._subLabel.validate();
 			
 			var newWidth:Number = this.explicitWidth;
 			if(needsWidth)
 			{
 				newWidth = this._label.width + 2 * this._padding;
-				newWidth = this._subLabel.width + 2 * this._padding;
+				//newWidth = this._subLabel.width + 2 * this._padding;
 			}
 			var newHeight:Number = this.explicitHeight;
 			if(needsHeight)
 			{
 				newHeight = this._label.height + 2 * this._padding;
-				newHeight = this._subLabel.height + 2 * this._padding;
+				//newHeight = this._subLabel.height + 2 * this._padding;
 			}
 			
 			return this.setSizeInternal(newWidth, newHeight, false);
@@ -169,12 +168,12 @@ package
 			if(this._data)
 			{
 				this._label.text = this._data.label;
-				this._subLabel.text = this._data.body;
+				//this._subLabel.text = this._data.body;
 			}
 			else
 			{
 				this._label.text = null;
-				this._subLabel.text = null;
+				//this._subLabel.text = null;
 			}
 		}
 		
@@ -184,13 +183,13 @@ package
 			this._label.y = this._padding;
 			this._label.width = this.actualWidth - 2 * this._padding;
 			this._label.height = this.actualHeight - 2 * this._padding;
-			this._subLabel.x = this._padding;
-			this._subLabel.y = this._padding+50;
+			//this._subLabel.x = this._padding;
+			//this._subLabel.y = this._padding+50;
 			
-			this._subLabel.width = (Constants.STAGE_WIDTH/100)*90;
-			this._subLabel.height = (Constants.STAGE_HEIGHT/100)*44;
+			//this._subLabel.width = (Constants.STAGE_WIDTH/100)*90;
+			//this._subLabel.height = (Constants.STAGE_HEIGHT/100)*44;
 			
-			_subLabel.validate();
+			//_subLabel.validate();
 		}
 	}
 }

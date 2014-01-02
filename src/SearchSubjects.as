@@ -4,6 +4,7 @@ package
 	
 	import com.adobe.utils.DateUtil;
 	import com.distriqt.extension.calendar.Calendar;
+	import com.distriqt.extension.calendar.events.CalendarStatusEvent;
 	import com.distriqt.extension.calendar.objects.EventAlarmObject;
 	import com.distriqt.extension.calendar.objects.EventObject;
 	import com.distriqt.extension.dialog.Dialog;
@@ -61,6 +62,7 @@ package
 		
 		protected var theme:SpurnTheme;
 		private var leaving:Boolean=false;
+		private var e:EventObject;
 
 
 		
@@ -71,6 +73,9 @@ package
 			this.addEventListener(starling.events.Event.ADDED_TO_STAGE, init);
 			registerClassAlias("ExamDataSet", ExamDataSet);
 			registerClassAlias("Exam", Exam);
+			Calendar.service.addEventListener( CalendarStatusEvent.UI_SAVE, 	calendar_uiHandler, false, 0, true );
+			Calendar.service.addEventListener( CalendarStatusEvent.UI_CANCEL,  	calendar_uiHandler, false, 0, true );
+			Calendar.service.addEventListener( CalendarStatusEvent.UI_DELETE,  	calendar_uiHandler, false, 0, true );
 		
 			
 		}
@@ -96,6 +101,7 @@ package
 			filteredVector=null;
 			list=null;
 			myArrayCollection=null;
+			e=null;
 		}
 		
 		public function createCalendarBut():void
@@ -144,8 +150,8 @@ package
 			
 			var calendarId:String = "";
 			
-			var e:EventObject = new EventObject();
-			
+			e = new EventObject();
+		
 			var myDate:Array = _exam.date.split(" ");
 			
 			var theDate:Date = new Date(int(myDate[2]),DateUtil.getShortMonthIndex(myDate[1]),int(myDate[0])) 
@@ -165,8 +171,21 @@ package
 			trace( "ADDING: "+e.startDateString + " :: " + e.title );
 			Calendar.service.addEventWithUI( e );
 			
-			_fatController.activeExamList.examsVector.push(e);
-			
+		}
+		
+		private function calendar_uiHandler( event:CalendarStatusEvent ):void
+		{
+			switch (event.type)
+			{
+								case CalendarStatusEvent.UI_SAVE:
+									_fatController.activeExamList.examsVector.push(e);
+								case CalendarStatusEvent.UI_CANCEL:
+								case CalendarStatusEvent.UI_DELETE:
+									break;
+				
+				default:
+					trace( event.type );
+			}
 		}
 		
 		
