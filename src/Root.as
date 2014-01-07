@@ -40,6 +40,8 @@ package
 		public static const TIPS_MENU:String="TipsMenu";
 		public static const TIPS_DETAILS:String="TipsDetails";
 		
+		public static var REFRESH_EXAM_CALENDAR_LIST:Boolean=false;
+		
 		public static var FIRST_TIME:Boolean=true;
 		public static var FAT_CONTROLLER:FatController;
 		
@@ -97,7 +99,7 @@ package
 			this.addChild( this._navigator );
 			//this._navigator.addScreen( "ViewExams", new ScreenNavigatorItem( ViewExams ) );
 			this._navigator.addScreen( SEARCH_SUBJECTS, new ScreenNavigatorItem( SearchSubjects ) );
-			this._navigator.addScreen( MENU, new ScreenNavigatorItem( Menu ) );
+			
 			this._navigator.addScreen( REVISION_APPS, new ScreenNavigatorItem( RevisionApps ) );
 			this._navigator.addScreen( EXAM_DETAIL, new ScreenNavigatorItem( ExamDetail ) );
 			this._navigator.addScreen( TIPS_DETAILS, new ScreenNavigatorItem( TipsDetails ) );
@@ -105,7 +107,7 @@ package
 			this._transitionManager = new ScreenSlidingStackTransitionManager( _navigator );
 			//this._transitionManager.
 			this._transitionManager.duration = 0.4;
-			this._transitionManager.delay=1;
+			this._transitionManager.delay=.4;
 			//this._transitionManager.ease = Transitions.EASE_OUT;
 			
             
@@ -165,6 +167,8 @@ package
         {
 			removeChild(_background);
 			_background=null;
+			var myMenu:Menu = new Menu()
+			this._navigator.addScreen( MENU, new ScreenNavigatorItem( myMenu ) );
 			this._navigator.showScreen(MENU);
            
         }

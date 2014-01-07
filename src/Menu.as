@@ -70,6 +70,8 @@ package
         
         public function Menu()
         {
+			
+			trace("!!!!!!!!!!!!!!!!!    creating a new menu   !!!!!!!!!!!!!!!!!!")
 		
 			itemsToDelete = new Vector.<String>;
 			
@@ -86,25 +88,17 @@ package
 		
 		private function owner_transitionCompleteHandler():void
 		{
-			if(leaving)
-			{
-				destroy();
-			}
-			else
-			{
-				// TODO Auto Generated method stub
-				trace("inti");
-				/*MonsterDebugger.initialize(this);
-				MonsterDebugger.enabled=true;
-				MonsterDebugger.trace(this, "StarlingWorld");*/
-				
+			
 				trace(" ---------------------TRANSITION COMPLETE--------------------------")
-				createTabBar();
+				//createTabBar();
+				if(Root.REFRESH_EXAM_CALENDAR_LIST)
+				{
+					trace(" ---------------------get exams--------------------------")
+
+					getExams();
+					Root.REFRESH_EXAM_CALENDAR_LIST=false;
+				}
 				
-				getExams();
-				addList();
-				_fatController.getExamData.getTimetable();
-			}
 			
 		}
 		
@@ -137,15 +131,25 @@ package
 			this.owner.addEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
 		
 			trace(" ---------------------INIT--------------------------")
-			addHeader();
-			addTitleBox();
-			addHeadingText();
-			addIcon();
+			if(header==null)
+			{
+			trace(" ---------------------creating objects--------------------------")
+				
+				addHeader();
+				addTitleBox();
+				addHeadingText();
+				addIcon();
+				createTabBar();
+				
+				getExams();
+				addList();
+				_fatController.getExamData.getTimetable();
+			}
 		}
 		
 		private function destroy():void
 		{
-			removeChildren();
+			/*removeChildren();
 			list.removeEventListener( starling.events.Event.CHANGE, list_changeHandler );
 			list.removeEventListener( starling.events.Event.RESIZE, list_changeHandler );
 			Dialog.service.removeEventListener( DialogEvent.DIALOG_CLOSED, dialog_dialogClosedHandler);
@@ -165,7 +169,7 @@ package
 			listData=null;
 			_fatController=null;
 			
-			this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
+			this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );*/
 		}
 		
 		private function oncalButTriggered():void

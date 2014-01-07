@@ -226,6 +226,7 @@ package
 			backButton.removeEventListener(starling.events.Event.TRIGGERED,backClicked);
 			leaving=true
 			//destroy();
+			Root.REFRESH_EXAM_CALENDAR_LIST=true;
 			this.owner.showScreen( Root.MENU );
 			
 		}			
