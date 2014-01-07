@@ -67,7 +67,14 @@ package
             // not more to do here -- Startup will call "start" immediately.
         }
 		
-		
+		public  function createExamSearch():void
+		{
+			var searchExams:SearchSubjects=new SearchSubjects();
+			
+			this._navigator.addScreen( SEARCH_SUBJECTS, new ScreenNavigatorItem( searchExams ) );
+			
+
+		}
 		
 		public static function getbitmapfnt():BitmapFont
 		{
@@ -98,7 +105,6 @@ package
 			this._navigator = new ScreenNavigator();
 			this.addChild( this._navigator );
 			//this._navigator.addScreen( "ViewExams", new ScreenNavigatorItem( ViewExams ) );
-			this._navigator.addScreen( SEARCH_SUBJECTS, new ScreenNavigatorItem( SearchSubjects ) );
 			
 			this._navigator.addScreen( REVISION_APPS, new ScreenNavigatorItem( RevisionApps ) );
 			this._navigator.addScreen( EXAM_DETAIL, new ScreenNavigatorItem( ExamDetail ) );
@@ -106,8 +112,8 @@ package
 			this._navigator.addScreen( TIPS_MENU, new ScreenNavigatorItem( TipsMenu ) );
 			this._transitionManager = new ScreenSlidingStackTransitionManager( _navigator );
 			//this._transitionManager.
-			this._transitionManager.duration = 0.4;
-			this._transitionManager.delay=.4;
+			this._transitionManager.duration = 0.5;
+			this._transitionManager.delay=.3;
 			//this._transitionManager.ease = Transitions.EASE_OUT;
 			
             
@@ -167,7 +173,7 @@ package
         {
 			removeChild(_background);
 			_background=null;
-			var myMenu:Menu = new Menu()
+			var myMenu:Menu = new Menu(this)
 			this._navigator.addScreen( MENU, new ScreenNavigatorItem( myMenu ) );
 			this._navigator.showScreen(MENU);
            

@@ -223,7 +223,7 @@ package
 		
 		private function backClicked():void
 		{
-			backButton.removeEventListener(starling.events.Event.TRIGGERED,backClicked);
+			//backButton.removeEventListener(starling.events.Event.TRIGGERED,backClicked);
 			leaving=true
 			//destroy();
 			Root.REFRESH_EXAM_CALENDAR_LIST=true;
@@ -238,15 +238,21 @@ package
 			trace("----------------SEARCH VIEW INIT-----------------")
 			this.removeEventListener(starling.events.Event.ADDED_TO_STAGE, init);
 			this.owner.addEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
-
+			
+			
 			addHeader();
+			
+			makeFooterTabs()
+			_fatController = Root.FAT_CONTROLLER;
+			
 			makeExamBoards();
 			addSearchInput();
 			makeList();
 			addDetailText();
 			
 			createCalendarBut();
-			makeFooterTabs()
+			_fatController.getExamData.getTimetable(populatetimeTable);
+
 		}
 		
 		private function owner_transitionCompleteHandler():void
@@ -260,10 +266,15 @@ package
 			{
 				trace("----------------SEARCH VIEW TRANSITION COMPLETE-----------------")
 				this.owner.removeEventListener( FeathersEventType.TRANSITION_COMPLETE, owner_transitionCompleteHandler );
-				_fatController = Root.FAT_CONTROLLER;
+				/*_fatController = Root.FAT_CONTROLLER;
 	
+				makeExamBoards();
+				addSearchInput();
+				makeList();
+				addDetailText();
 				
-				_fatController.getExamData.getTimetable(populatetimeTable);
+				createCalendarBut();
+				_fatController.getExamData.getTimetable(populatetimeTable);*/
 			}
 			
 			

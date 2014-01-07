@@ -67,9 +67,12 @@ package
 
 		private var debug:Boolean=false;
 		private var leaving:Boolean=false;
+		private var _root:Root;
         
-        public function Menu()
+        public function Menu(root:Root)
         {
+			
+			_root=root;
 			
 			trace("!!!!!!!!!!!!!!!!!    creating a new menu   !!!!!!!!!!!!!!!!!!")
 		
@@ -321,6 +324,8 @@ package
 			
 			
 			//list.selectedIndex = 0;
+			
+			_root.createExamSearch();
 			
 		}
 		
