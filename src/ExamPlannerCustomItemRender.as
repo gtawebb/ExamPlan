@@ -1,13 +1,14 @@
 package
 {
-	import feathers.controls.Label;
+	import flash.text.TextFormat;
+	import flash.text.TextFormatAlign;
+	
 	import feathers.controls.List;
+	import feathers.controls.ScrollText;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.core.FeathersControl;
 	
 	import starling.events.Event;
-	
-	import themes.SpurnTheme;
 	
 	public class ExamPlannerCustomItemRender extends FeathersControl implements IListItemRenderer
 	{
@@ -15,7 +16,8 @@ package
 		{
 		}
 		
-		protected var _label:Label;
+		protected var _label:ScrollText;
+		//private var square:Quad;
 		//protected var _subLabel:TextInput;
 		
 		protected var _index:int = -1;
@@ -67,6 +69,7 @@ package
 			}
 			this._data = value;
 			this.invalidate(INVALIDATION_FLAG_DATA);
+		
 		}
 		
 		protected var _isSelected:Boolean;
@@ -85,6 +88,8 @@ package
 			this._isSelected = value;
 			this.invalidate(INVALIDATION_FLAG_SELECTED);
 			this.dispatchEventWith(Event.CHANGE);
+			trace("slelct")
+			
 		}
 		
 		protected var _padding:Number = 0;
@@ -108,13 +113,29 @@ package
 		{
 			if(!this._label)
 			{
-				this._label = new Label();
-				this._label.nameList.add( SpurnTheme.TIPS_HEADING_TEXT_AREA );
+				/*square = new Quad(Constants.STAGE_WIDTH-(Constants.STAGE_WIDTH/100*10), (Constants.STAGE_HEIGHT/100)*65,0x000000 )
+				square.x=(Constants.STAGE_WIDTH/100)*5;
+				square.y=(Constants.STAGE_HEIGHT/100)*5;
+				addChild(square);*/
+				this._label = new ScrollText();
+				//this._label.nameList.add( SpurnTheme.TIPS_HEADING_TEXT_AREA );
 				this.addChild(this._label);
+				this._label.paddingTop=0;
+				
+				_label.isHTML=true;
+				_label.background=true;
+				_label.backgroundColor=0x000000;
+				//_label.clipContent = true;
+				//_label.wordWrap = true;
+				
+				_label.textFormat = new TextFormat( "Helvetica", 16, 0xFFFFFF,false,null,null,null,null,TextFormatAlign.CENTER,null,null,null,5 );
+				
+				
 				//this._subLabel = new TextInput();
 				//this._subLabel.nameList.add( SpurnTheme.DETAILS_TEXT_AREA );
 				//this.addChild(this._subLabel);
 			}
+			
 			
 		}
 		
@@ -127,8 +148,10 @@ package
 				this.commitData();
 			}
 			
-			this.autoSizeIfNeeded();
+			//this.autoSizeIfNeeded();
 			this.layoutChildren();
+			
+			
 		}
 		
 		protected function autoSizeIfNeeded():Boolean
@@ -175,21 +198,24 @@ package
 				this._label.text = null;
 				//this._subLabel.text = null;
 			}
+			
 		}
 		
 		protected function layoutChildren():void
 		{
 			this._label.x = this._padding;
-			this._label.y = this._padding;
+			this._label.y = this._padding+20;
 			this._label.width = this.actualWidth - 2 * this._padding;
-			this._label.height = this.actualHeight - 2 * this._padding;
+			this._label.height = this.actualHeight - 6 * this._padding;
 			//this._subLabel.x = this._padding;
 			//this._subLabel.y = this._padding+50;
 			
 			//this._subLabel.width = (Constants.STAGE_WIDTH/100)*90;
 			//this._subLabel.height = (Constants.STAGE_HEIGHT/100)*44;
 			
-			//_subLabel.validate();
+			
+			
+			
 		}
 	}
 }

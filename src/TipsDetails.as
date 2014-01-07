@@ -8,14 +8,12 @@ package
 	import feathers.controls.List;
 	import feathers.controls.PageIndicator;
 	import feathers.controls.Screen;
-	import feathers.controls.ScrollContainer;
 	import feathers.controls.Scroller;
 	import feathers.controls.TextInput;
 	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.data.ListCollection;
 	import feathers.events.FeathersEventType;
 	import feathers.layout.HorizontalLayout;
-	import feathers.layout.VerticalLayout;
 	
 	import starling.display.DisplayObject;
 	import starling.events.Event;
@@ -83,9 +81,11 @@ package
 			//addChild(square);
 			container=new List();
 			addChild(container);
+			
 			var layout:HorizontalLayout = new HorizontalLayout();
 			//layout.gap = 20;
 			//layout.padding = 20;
+			//container.y=30;
 			container.layout = layout;
 			container.pageWidth=Constants.STAGE_WIDTH;
 			container.scrollBarDisplayMode =Scroller.SCROLL_BAR_DISPLAY_MODE_NONE;
@@ -96,13 +96,15 @@ package
 			//container.width=(Constants.STAGE_WIDTH/100)*90;
 			//container.height=(Constants.STAGE_HEIGHT/100)*90;
 			container.y=detailText.height+detailText.y;
+			
 			container.addEventListener(FeathersEventType.SCROLL_COMPLETE, scrollComplete);
 			
-			var layoutVert:VerticalLayout = new VerticalLayout();
-			layoutVert.gap = 20;
+			//var layoutVert:VerticalLayout = new VerticalLayout();
+			
+			//layoutVert.gap = 20;
 			//layout.padding = 20;
-			var group:ScrollContainer=new ScrollContainer();
-			group.layout=layoutVert;
+			//var group:ScrollContainer=new ScrollContainer();
+			//group.layout=layoutVert;
 			
 			
 			var myObject:Object;
@@ -120,16 +122,25 @@ package
 			
 			var myListCollection:ListCollection = new ListCollection(myArrayOfObjects);
 			container.dataProvider=myListCollection;
+			//container.addEventListener( starling.events.Event.TRIGGERED, list_changeHandler );
 			container.itemRendererFactory = tileListItemRendererFactory;
+			
+		}
+		
+		private function list_changeHandler():void
+		{
+			trace("change")
 		}
 		
 		protected function tileListItemRendererFactory():IListItemRenderer
 		{
 			var renderer:ExamPlannerCustomItemRender = new ExamPlannerCustomItemRender();
+			
 			renderer.padding = 10;
 			renderer.width=(Constants.STAGE_WIDTH);
-			renderer.height=(Constants.STAGE_HEIGHT/100)*64;
+			renderer.height=(Constants.STAGE_HEIGHT/100)*74;
 			//renderer.data = "title";
+			
 			return renderer;
 			
 			/*
@@ -139,7 +150,6 @@ package
 			renderer.width=(Constants.STAGE_WIDTH);
 			renderer.height=(Constants.STAGE_HEIGHT/100)*64;*/
 			//renderer.iconSourceField = "texture";
-			return renderer;
 		}
 		
 		
@@ -157,6 +167,7 @@ package
 			trace("complete")
 			
 			pages.selectedIndex=List(e.target).horizontalPageIndex;
+		
 			
 		}
 		private function createPageIndicator():void
@@ -183,19 +194,19 @@ package
 		private function addAdviceText():void 
 		{
 			detailText = new TextInput();
-			detailText.nameList.add( SpurnTheme.PARA_TEXT_AREA );
+			detailText.nameList.add( SpurnTheme.TIPS_MAIN_HEADING_TEXT_AREA );
 			this.addChild( this.detailText );
 			//detailText.backgroundSkin = new Image(Texture.fromBitmapData(new BitmapData(1,1,false,0xffffff)));
 			detailText.width = (Constants.STAGE_WIDTH);
 			detailText.padding=5;
 			
-			detailText.height = (Constants.STAGE_HEIGHT/100)*20;
-			detailText.x = 0;
+			detailText.height = (Constants.STAGE_HEIGHT/100)*10;
+			//detailText.x = 0;
 			
 			detailText.y = header.y+header.height;
 			detailText.isEditable = false;
 			
-			detailText.text = Constants.TIPS_DETAILS_SUBS[tipsIndex];
+			detailText.text = Constants.TIPS_TITLES[tipsIndex];
 			
 			detailText.validate();	
 		}
@@ -205,7 +216,7 @@ package
 			header = new Header();
 			header.width = Constants.STAGE_WIDTH;
 			//header.height = (Constants.STAGE_HEIGHT/100)*10;
-			header.title = Constants.TIPS_TITLES[tipsIndex];
+			header.title = "Exam Preparation";
 			
 			this.addChild( header );
 			backButton = new Button();
@@ -221,7 +232,8 @@ package
 		
 		private function backClicked():void
 		{
-			
+			container.dataProvider=null;
+			container.visible=false;
 			backButton.removeEventListener(starling.events.Event.TRIGGERED, backClicked);
 			leaving=true;
 			//destroy();

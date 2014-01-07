@@ -4,6 +4,7 @@ package
 	import feathers.controls.Header;
 	import feathers.controls.List;
 	import feathers.controls.Screen;
+	import feathers.controls.ScreenNavigatorItem;
 	import feathers.controls.TextInput;
 	import feathers.events.FeathersEventType;
 	
@@ -111,6 +112,8 @@ package
 			//destroy();
 			leaving=true;
 			this.owner.showScreen( Root.MENU );
+			//this.owner.addScreen("MENUCACHE",ScreenNavigatorItem(this));
+			//this.owner.showScreen( "MENUCACHE");
 			
 			
 		}		

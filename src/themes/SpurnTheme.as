@@ -4,21 +4,11 @@ package themes
 	import flash.geom.Rectangle;
 	import flash.text.TextFormat;
 	import flash.text.TextFormatAlign;
-	import flash.text.engine.CFFHinting;
-	import flash.text.engine.ElementFormat;
-	import flash.text.engine.FontDescription;
-	import flash.text.engine.FontLookup;
-	import flash.text.engine.FontPosture;
-	import flash.text.engine.FontWeight;
-	import flash.text.engine.RenderingMode;
 	
 	import feathers.controls.Button;
 	import feathers.controls.Label;
-	import feathers.controls.List;
 	import feathers.controls.TextInput;
 	import feathers.controls.renderers.BaseDefaultItemRenderer;
-	import feathers.controls.renderers.DefaultListItemRenderer;
-	import feathers.controls.renderers.IListItemRenderer;
 	import feathers.controls.text.BitmapFontTextRenderer;
 	import feathers.controls.text.TextFieldTextEditor;
 	import feathers.controls.text.TextFieldTextRenderer;
@@ -58,6 +48,7 @@ package themes
 		public static const ALTERNATE_NAME_MY_TAB_BAR:String = "ALTERNATE_NAME_MY_TAB_BAR";
 		public static const ALTERNATE_NAME_MY_TEXT_INPUT:String = "ALTERNATE_NAME_MY_TEXT_INPUT";
 		public static const HEADING_TEXT_AREA:String = "HEADING_TEXT_AREA";
+		public static const TIPS_MAIN_HEADING_TEXT_AREA:String = "TIPS_MAIN_HEADING_TEXT_AREA";
 		public static const TIPS_HEADING_TEXT_AREA:String = "TIPS_HEADING_TEXT_AREA";
 		public static const PARA_TEXT_AREA:String = "PARA_TEXT_AREA";
 		public static const DETAILS_TEXT_AREA:String = "DETAILS_TEXT_AREA";
@@ -97,6 +88,7 @@ package themes
 			
 			this.setInitializerForClass( TextInput, myTextInputInit, ALTERNATE_NAME_MY_TEXT_INPUT );
 			this.setInitializerForClass( TextInput, myHeadingText, HEADING_TEXT_AREA );
+			this.setInitializerForClass( TextInput, tipsMainHeadingText, TIPS_MAIN_HEADING_TEXT_AREA );
 			this.setInitializerForClass( Label, tipsHeadings, TIPS_HEADING_TEXT_AREA );
 			this.setInitializerForClass( TextInput, myParaText, PARA_TEXT_AREA );
 			this.setInitializerForClass( TextInput, myDetailsText, DETAILS_TEXT_AREA );
@@ -227,7 +219,29 @@ package themes
 				return editor;
 			}
 		}
+		protected function tipsMainHeadingText(textInput:TextInput):void
+		{
+			// TODO Auto Generated method stub
+			
+			textInput.backgroundSkin = new Image(Texture.fromBitmapData(new BitmapData(1,1,false,0xd7dcc7)));
+			trace("got here")
+			
 		
+			
+			textInput.textEditorFactory = function():ITextEditor
+			{
+				var editor:TextFieldTextEditor = new TextFieldTextEditor();
+				editor.embedFonts=true;
+				editor.multiline = true;
+			
+				editor.wordWrap = true;
+				editor.textFormat = new TextFormat( "DINEngschriftStd", 26, 0x000000,null,null,null,null,null,TextFormatAlign.CENTER,null,null,null,5 );
+				
+				return editor;
+			}
+		}
+		
+	
 		protected function tipsHeadings(textInput:Label):void
 		{
 			// TODO Auto Generated method stub
@@ -240,7 +254,7 @@ package themes
 			textInput.textRendererFactory = function():ITextRenderer
 			{
 				var editor:TextFieldTextRenderer = new TextFieldTextRenderer();
-				editor.wordWrap=true;
+				//editor.wordWrap=true;
 				//editor.multiline = true;
 				editor.isHTML=true;
 				editor.background=true;
@@ -345,7 +359,7 @@ package themes
 		
 		override protected function itemRendererInitializer(renderer:BaseDefaultItemRenderer):void
 		{
-			
+			super.itemRendererInitializer(renderer);
 			const skinSelector:SmartDisplayObjectStateValueSelector = new SmartDisplayObjectStateValueSelector();
 			skinSelector.defaultValue = listItem;
 			//skinSelector.defaultSelectedValue = buttonDown;
@@ -359,7 +373,7 @@ package themes
 			renderer.stateToSkinFunction = skinSelector.updateValue;
 			
 		
-			this.regularFontDescription = new FontDescription("DINEngschriftStd", FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.DEVICE, RenderingMode.NORMAL, CFFHinting.HORIZONTAL_STEM);
+			/*this.regularFontDescription = new FontDescription("Helvetica", FontWeight.NORMAL, FontPosture.NORMAL, FontLookup.DEVICE, RenderingMode.NORMAL, CFFHinting.HORIZONTAL_STEM);
 			
 			renderer.defaultLabelProperties.elementFormat  = new ElementFormat(this.regularFontDescription, 28 * this.scale, LIGHT_TEXT_COLOR);
 			renderer.defaultLabelProperties.embedFonts = true;
@@ -381,7 +395,7 @@ package themes
 			renderer.minTouchWidth = renderer.minTouchHeight = 88 * this.scale;
 			
 			renderer.accessoryLoaderFactory = this.imageLoaderFactory;
-			renderer.iconLoaderFactory = this.imageLoaderFactory;
+			renderer.iconLoaderFactory = this.imageLoaderFactory;*/
 		}
 		
 		

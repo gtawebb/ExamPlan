@@ -9,9 +9,6 @@ package
     import feathers.controls.ScreenNavigatorItem;
     import feathers.motion.transitions.ScreenSlidingStackTransitionManager;
     
-    import model.HTTPService;
-    
-    import starling.animation.Transitions;
     import starling.core.Starling;
     import starling.display.Image;
     import starling.display.Sprite;

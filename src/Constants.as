@@ -43,7 +43,7 @@ package
 		public static const TIPS_TITLES:Vector.<String> = new <String>["Revision Tips","Creating your revision timetable","Staying healthy","Dealing with stress","24 hour countdown",
 			"In the exam"];
 		
-		public static const TIPS_DETAILS_SUBS:Vector.<String> = new <String>["It’s all worth it in the end! Work hard, stay focused and remember to relax."
+		/*public static const TIPS_DETAILS_SUBS:Vector.<String> = new <String>["It’s all worth it in the end! Work hard, stay focused and remember to relax."
 			,"Your revision timetable will be one of the most useful things that you can create to keep yourself organised and ensure that you cover all the subjects that you need" +
 			" to in enough detail. The key to this is planning what you need to cover, but doing so in a way that will work best for you, that you feel is manageable and is done" +
 			" in a way that helps you remember things.<br><br>Being prepared will help you feel ready for when the exams come round so you can take them all in your stride!"
@@ -53,9 +53,12 @@ package
 			,"Here are RB’s tips for dealing with the exams themselves. Don’t forget that panicking gets you nowhere, stay calm and if the questions are tricky remember that everyone" +
 			" will likely be thinking the same, so your chances haven’t changed. If you have done effective revision and stayed healthy with good amounts of sleep your brain will be" +
 			" ready to perform."];
+		*/
 		
-		
-		public static const TIPS_DETAILS_BODIES_5:Vector.<String> = new <String>["<b>Plan carefully</b><br><br>On the day of your exam make sure that you know when and where the exam is and get" +
+		public static const TIPS_DETAILS_BODIES_5:Vector.<String> = new <String>["<b>Here are RB’s tips for dealing with the exams themselves. Don’t forget that panicking gets you nowhere, stay calm and if the questions are tricky remember that everyone" +
+			" will likely be thinking the same, so your chances haven’t changed. If you have done effective revision and stayed healthy with good amounts of sleep your brain will be" +
+			" ready to perform.</b>"
+			,"<b>Plan carefully</b><br><br>On the day of your exam make sure that you know when and where the exam is and get" +
 			" there in plenty of time. Make sure you have everything with you that you need – pens, pencils, rubber, calculator? and that you have any identification or" +
 			" necessary details.<br><br>When you open the paper, read the whole thing prior to picking up your pen, then read it again.  Use this time to work out which" +
 			" questions you’re going to do and how much time you are going to spend on each one and note the mark scheme so that you can time the answer accordingly.<br><br>Read" +
@@ -88,7 +91,10 @@ package
 			,"<b>Why are you leaving early?</b><br><br>Unless you are 100% sure that you are going to score 100%, you should not walk out of an exam early. Read over your answers," +
 			" double check your calculations, check that your essay answer covers all the points in the plan. Then check again."];
 		
-		public static const TIPS_DETAILS_BODIES_1:Vector.<String> = new <String>["<b>Getting organised</b><br><br>Stock up on things that you will need so you’re ready to go:<br><br>Highlighters<br>Pens<br>Revision " +
+		public static const TIPS_DETAILS_BODIES_1:Vector.<String> = new <String>["<b>Your revision timetable will be one of the most useful things that you can create to keep yourself organised and ensure that you cover all the subjects that you need" +
+			" to in enough detail. The key to this is planning what you need to cover, but doing so in a way that will work best for you, that you feel is manageable and is done" +
+			" in a way that helps you remember things.<br><br>Being prepared will help you feel ready for when the exams come round so you can take them all in your stride!</b>"
+			,"<b>Getting organised</b><br><br>Stock up on things that you will need so you’re ready to go:<br><br>Highlighters<br>Pens<br>Revision " +
 			"Cards<br>Post it notes<br>Paper<br><br>Make sure that you have a quiet, calm area for studying, with no distractions."
 			,"<b>Split out key topics within each subject</b><br><br>Making a revision plan requires breaking things down into manageable chunks – and before putting together your planner, splitting subjects into key topics that you know you" +
 			" need to cover for each exam is the starting point to help you figure out how much work will be involved for each one.<br><br>There will be some subjects that are longer than" +
@@ -126,7 +132,8 @@ package
 			,"<b>Share your exam timetable</b><br><br>Once you’ve made your plan, share it with your family so that they can support you and they know when they can and can’t disturb you. Now you're prepared, you know how much time you have" +
 			" to learn a certain number of topics. You can revise without panicking, which will enhance your revision time and help you feel in control of your exams"];
 		
-		public static const TIPS_DETAILS_BODIES_4:Vector.<String> = new <String>["<b>Rule number 1</b><br><br>Stock up the short term memory<br><br> It is too late to learn new things, you just want to be consolidating" +
+		public static const TIPS_DETAILS_BODIES_4:Vector.<String> = new <String>["<b>GOOD LUCK AND KEEP SMILING – YOU ARE NEARLY THERE</b>"
+			,"<b>Rule number 1</b><br><br>Stock up the short term memory<br><br> It is too late to learn new things, you just want to be consolidating" +
 			" your knowledge at this point. Our apps are great for this, but you might also find that writing out your key facts for certain subject areas helpful too. You can write brief essay" +
 			" plans to questions or practice applying your knowledge to past papers"
 			,"<b>Rule number 2</b><br><br>Go for a run<br><br>Take some exercise. Make sure your body is fit and that your blood is pumping, it helps your brain work and gives you some time to let information settle "
@@ -138,7 +145,8 @@ package
 			,"<b>Rule number 5</b><br><br>Be prepared<br><br>Know where the exam is, what time it is, get there in plenty of time and know the format of the exam. Take everything you need into the exam, including some water" +
 			" to keep you nicely hydrated, and maybe a banana to boost energy levels"];
 		
-		public static const TIPS_DETAILS_BODIES_2:Vector.<String> = new <String>["<b>A balanced diet</b><br><br>Eat lots of vegetables – they will give you lots of minerals and nutrients to keep you going and make you feel better" +
+		public static const TIPS_DETAILS_BODIES_2:Vector.<String> = new <String>["<b>Healthy food, getting sleep, taking regular exercise and maintaining a work / life balance all contribute to keeping healthy and feeling positive in the run up to exams.</b>"
+			,"<b>A balanced diet</b><br><br>Eat lots of vegetables – they will give you lots of minerals and nutrients to keep you going and make you feel better" +
 			" in yourself.<br><br>Protein and carbohydrate are also very important – having a good combination of all the food types will help your brain tick over and give you the energy you require." +
 			" Brain power comes from somewhere and this is mainly from food!<br><br>Avoid things that will give you a quick hit of energy and then make you feel sluggish afterwards. The concept of a" +
 			" sugar high is a real thing –  sugar does not give sustainable energy that your body can process and keep – natural sugars from fruit are much better for you and a banana will give you" +
@@ -152,7 +160,8 @@ package
 			,"<b>Take regular breaks</b><br><br>This is like taking exercise – it’s important not to be chained to your desk all the time. If you’ve done a good session of revision then reward yourself for this and do something fun." +
 			" Staying happy is an important part of being healthy."];
 		
-		public static const TIPS_DETAILS_BODIES_3:Vector.<String> = new <String>["<b>Be organised</b><br><br>Get to the exams on time – know when you exams are being held, where you need to be and how long you should get" +
+		public static const TIPS_DETAILS_BODIES_3:Vector.<String> = new <String>["<b>Exams are stressful times – Here are a few things which we think are helpful ways of dealing with stress:</b>"
+			,"<b>Be organised</b><br><br>Get to the exams on time – know when you exams are being held, where you need to be and how long you should get" +
 			" there before they start.<br><br>Make sure you have pens that work (it sounds silly, but it’s happened before) and that if you need a calculator – this works too. Also make sure you" +
 			" have protractor / compass or other things you might need for certain exams"
 			,"<b>Prepare properly –have an organised revision plan</b><br><br>It’s as much about the build up to exams as it is with taking them – if you feel prepared for them, this will help so much with avoiding any last minute worry that you haven’t" +
@@ -172,7 +181,8 @@ package
 			,"<b>Most importantly – stress can be good for you!</b><br><br>Stress IS good for you – within reason – it keeps your brain sharp and can help you focus your mind."
 			,"<b>And Finally….make a plan for when they’re over</b><br><br>They will be over at some point! And then you can go and have a great summer holiday – make plans to do something you can really look forward to – then it will all be worth it!"];
 		
-		public static const TIPS_DETAILS_BODIES_0:Vector.<String> = new <String>["<b>Test yourself!</b><br><br>It is all very well reading what you need to know, but you need to make sure that you have learnt it. Some" +
+		public static const TIPS_DETAILS_BODIES_0:Vector.<String> = new <String>["<b>It’s all worth it in the end! Work hard, stay focused and remember to relax.</b>"
+			,"<b>Test yourself!</b><br><br>It is all very well reading what you need to know, but you need to make sure that you have learnt it. Some" +
 			" people find that they learn more if they take notes whilst reading, then test themselves on the notes that they have taken. This will make your revision time rewarding and" +
 			" also mean that you know what you need to look over again."
 			,"<b>Know how to apply your knowledge</b><br><br>Revising isn’t just about getting to grips with what to know, it’s also about making sure you know how to apply it. For subjects like maths, the question/answer format is" +

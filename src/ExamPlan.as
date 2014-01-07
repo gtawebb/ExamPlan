@@ -1,6 +1,5 @@
 package
 {
-    import com.demonsters.debugger.MonsterDebugger;
     import com.distriqt.extension.calendar.Calendar;
     import com.distriqt.extension.calendar.events.CalendarStatusEvent;
     import com.distriqt.extension.dialog.Dialog;
@@ -25,8 +24,8 @@ package
     public class ExamPlan extends Sprite
     {
         // We embed the "Ubuntu" font. Beware: the 'embedAsCFF'-part IS REQUIRED!!!
-        [Embed(source="/fonts/Ubuntu-R.ttf", embedAsCFF="false", fontFamily="Ubuntu")]
-        private static const UbuntuRegular:Class;
+       // [Embed(source="/fonts/Ubuntu-R.ttf", embedAsCFF="false", fontFamily="Ubuntu")]
+       // private static const UbuntuRegular:Class;
         
         // Startup image for SD screens
         [Embed(source="/Default.png")]

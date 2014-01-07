@@ -456,9 +456,17 @@ package
 		protected function tileListItemRendererFactoryForText():IListItemRenderer
 		{
 			const renderer:DefaultListItemRenderer = new DefaultListItemRenderer();
-			renderer.labelField = "title";
+			//renderer.labelField = "title";
+			
 			//renderer.@accessoryLabelProperties.textFormat = new TextFormat( "Helvetica", 18, 0xFFFFFF, true );
 			
+			
+			renderer.labelFunction = function( item:Object ):String
+			{
+				var length:int = EventObject(item).title.length-6;
+				return EventObject(item).title.substr(6,length);
+			};
+
 			var date:Date=new Date();
 		
 			
@@ -598,8 +606,9 @@ package
 			tabs.direction = ButtonGroup.DIRECTION_HORIZONTAL;
 			//tabs.gap=5;
 			tabs.horizontalAlign=ButtonGroup.HORIZONTAL_ALIGN_CENTER;
+			//tabs.verticalAlign=ButtonGroup.VERTICAL_ALIGN_MIDDLE;
 
-			//tabs.paddingRight=5;
+			tabs.paddingTop=2;
 			tabs.customButtonName = SpurnTheme.ALTERNATE_NAME_MY_TAB_MIDDLE;
 			
 			tabs.dataProvider = new ListCollection(

@@ -179,6 +179,7 @@ package
 			{
 								case CalendarStatusEvent.UI_SAVE:
 									_fatController.activeExamList.examsVector.push(e);
+									Dialog.service.showAlertDialog( 1, "Success", "The exam has now been added to your calendar as well as the My Exams section of this app.")
 								case CalendarStatusEvent.UI_CANCEL:
 								case CalendarStatusEvent.UI_DELETE:
 									break;
